@@ -824,9 +824,9 @@ export default function App() {
 
       {/* HEADER */}
       <header className="header">
-        <div className="header-eyebrow">✦ Creamente ✦</div>
-        <h1 className="header-title">El Oráculo de Personajes</h1>
-        <p className="header-sub">Cada tirada revela lo que tu historia necesita</p>
+        <div className="header-eyebrow">✦ El Oráculo ✦</div>
+        <h1 className="header-title">La Forja de Personajes</h1>
+        <p className="header-sub">Cada tirada revela el nacimiento de una nueva historia</p>
         <div className="header-ornament">
           <div className="orn-line" />
           <span className="orn-diamond">◆</span>
