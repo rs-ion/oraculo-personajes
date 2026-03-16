@@ -112,7 +112,7 @@ export default function Navbar() {
 
       <nav className="navbar">
         <div className="navbar-inner">
-          <a href="/" className="navbar-brand">El Oráculo</a>
+          <a href="/#" className="navbar-brand">El Oráculo</a>
 
           {MODULES.map(mod => {
             const isActive = mod.exact
