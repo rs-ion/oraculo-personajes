@@ -18,7 +18,7 @@ const FORJAS = [
     color: "#7a5c9e",
     accent: "#b89fd4",
     description: "Genera facciones únicas con tipo, trasfondo, principios, objetivos y ritos mediante tiradas aleatorias.",
-    status: "pronto",
+    status: "activo",
     tags: ["Tipo", "Trasfondo", "Principios", "Ritos"],
   },
   {
@@ -38,7 +38,7 @@ const FORJAS = [
     color: "#2d6a4f",
     accent: "#74c69d",
     description: "Crea naciones y pueblos con sociedad, jerarquía, tipo político y organización mediante tiradas.",
-    status: "pronto",
+    status: "activo",
     tags: ["Sociedad", "Jerarquía", "Política", "Tipo"],
   },
   {
@@ -48,7 +48,7 @@ const FORJAS = [
     color: "#8b2a2a",
     accent: "#e8776d",
     description: "Diseña panteones completos con deidades, sistema de creencias, culto, moral y trasfondo.",
-    status: "pronto",
+    status: "activo",
     tags: ["Deidades", "Creencias", "Culto", "Moral"],
   },
 ];

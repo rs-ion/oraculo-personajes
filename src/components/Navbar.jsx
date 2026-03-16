@@ -1,12 +1,12 @@
 import { NavLink, useLocation } from "react-router-dom";
 
 const MODULES = [
-  { path: "/",            label: "Inicio",        symbol: "✦",  exact: true  },
-  { path: "/personajes",  label: "Personajes",     symbol: "⚔"              },
-  { path: "/facciones",   label: "Facciones",      symbol: "⚜"              },
-  { path: "/magia",       label: "Magia",          symbol: "✶"              },
-  { path: "/pueblos",     label: "Pueblos",        symbol: "🏛"              },
-  { path: "/religiones",  label: "Religiones",     symbol: "☽"              },
+  { path: "/",            label: "Inicio",       symbol: "✦",  exact: true  },
+  { path: "/personajes",  label: "Personajes",   symbol: "⚔"               },
+  { path: "/facciones",   label: "Facciones",    symbol: "⚜"               },
+  { path: "/magia",       label: "Magia",        symbol: "✶"               },
+  { path: "/pueblos",     label: "Pueblos",      symbol: "🏛"               },
+  { path: "/religiones",  label: "Religiones",   symbol: "☽"               },
 ];
 
 export default function Navbar() {
@@ -78,11 +78,6 @@ export default function Navbar() {
           color: var(--gold-light);
           border-bottom-color: var(--gold);
         }
-        .nav-link.coming-soon {
-          opacity: 0.35;
-          cursor: default;
-          pointer-events: none;
-        }
         .nav-symbol {
           font-size: 0.82rem;
           opacity: 0.75;
@@ -90,17 +85,6 @@ export default function Navbar() {
         .nav-link.active .nav-symbol {
           opacity: 1;
           filter: drop-shadow(0 0 6px rgba(201,147,58,0.6));
-        }
-
-        .nav-coming-badge {
-          font-size: 0.42rem;
-          letter-spacing: 0.1em;
-          background: rgba(201,147,58,0.12);
-          border: 1px solid rgba(201,147,58,0.2);
-          color: var(--gold-dim);
-          padding: 0.1rem 0.35rem;
-          border-radius: 2px;
-          margin-left: 0.2rem;
         }
 
         @media (max-width: 600px) {
@@ -119,18 +103,15 @@ export default function Navbar() {
               ? location.pathname === mod.path || location.pathname === "/"
               : location.pathname.startsWith(mod.path);
 
-            const isComingSoon = ["/facciones", "/pueblos", "/religiones"].includes(mod.path);
-
             return (
               <NavLink
                 key={mod.path}
                 to={mod.path}
-                className={`nav-link ${isComingSoon ? "coming-soon" : ""} ${isActive ? "active" : ""}`}
+                className={`nav-link ${isActive ? "active" : ""}`}
                 end={mod.exact}
               >
                 <span className="nav-symbol">{mod.symbol}</span>
                 {mod.label}
-                {isComingSoon && <span className="nav-coming-badge">pronto</span>}
               </NavLink>
             );
           })}

@@ -32,7 +32,7 @@ const DECKS = {
       { id: "a20", title: "La Reformadora Implacable", body: "El sistema está roto y ella lo sabe con precisión quirúrgica. Su problema: para arreglarlo necesita convertirse en el sistema." },
       { id: "a21", title: "El Artista Maldito", body: "Crea obras que cambian a quienes las contemplan. El proceso lo destruye a él. Ha decidido que vale la pena." },
       { id: "a22", title: "El Guardián sin Reino", body: "Dedicó su vida a proteger algo que ya no existe. No sabe hacer otra cosa. No sabe si quiere aprender." },
-      { id: "a23", title: "La Heretera del Caos", body: "Nació en una familia que construyó su poder sobre sangre. Ella no pidió ese legado. Tampoco lo ha rechazado." },
+      { id: "a23", title: "La Heredera del Caos", body: "Nació en una familia que construyó su poder sobre sangre. Ella no pidió ese legado. Tampoco lo ha rechazado." },
       { id: "a24", title: "El Espía Enamorado", body: "Su misión requería fingir afecto. Dejó de fingir hace tiempo. Ahora no sabe qué traiciona si actúa: la misión o a sí mismo." },
       { id: "a25", title: "La Médica de Guerra", body: "Ha salvado vidas en ambos bandos. Ninguno la perdona por ello. Ella tampoco se perdona a sí misma algunas de las elecciones que hizo." },
       { id: "a26", title: "El Profeta Dudoso", body: "Recibe visiones que siempre se cumplen. No les cree. No puede permitirse creerles. Actuar sobre ellas cambia quién es." },
@@ -203,17 +203,10 @@ function generateRoll(activeDeckIds) {
 
 // ─── CARD COMPONENT ──────────────────────────────────────────────────────────
 
-function CardComponent({ deckId, card, onSave, saved, cardIndex, isNew }) {
+function CardComponent({ deckId, card, onSave, saved}) {
   const [flipped, setFlipped] = useState(false);
   const [sparkle, setSparkle] = useState(false);
   const deck = DECKS[deckId];
-
-  useState(() => {
-    if (isNew) {
-      const t = setTimeout(() => setFlipped(true), cardIndex * 160 + 250);
-      return () => clearTimeout(t);
-    }
-  });
 
   const prevCard = useRef(card);
   if (prevCard.current.id !== card.id) {
@@ -497,12 +490,12 @@ export default function ForjaPersonajes() {
         .card-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1); }
         .card-wrapper.flipped .card-inner { transform: rotateY(180deg); }
         .card-face { position: absolute; inset: 0; backface-visibility: hidden; border-radius: 7px; overflow: hidden; }
-        .card-back { background: #0f0c09; border: 1px solid var(--deck-color); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; box-shadow: 0 6px 24px rgba(0,0,0,0.7); }
+        .card-back { background: #0f0c09; border: 2px solid var(--deck-accent); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; box-shadow: 0 6px 24px rgba(0,0,0,0.7); }
         .card-back-pattern { position: absolute; inset: 0; background-image: repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(255,255,255,0.007) 8px, rgba(255,255,255,0.007) 9px), repeating-linear-gradient(-45deg, transparent, transparent 8px, rgba(255,255,255,0.007) 8px, rgba(255,255,255,0.007) 9px); border-radius: 6px; }
-        .card-back-symbol { font-size: 2.2rem; color: var(--deck-color); filter: drop-shadow(0 0 14px var(--deck-color)); opacity: 0.75; position: relative; }
-        .card-back-label { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--deck-color); opacity: 0.5; position: relative; }
+        .card-back-symbol { font-size: 2.2rem; color: var(--deck-accent); filter: drop-shadow(0 0 14px var(--deck-color)); opacity: 1; position: relative; }
+        .card-back-label { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--deck-accent); opacity: 0.85; position: relative; }
         .card-back-border { position: absolute; inset: 7px; border: 1px solid rgba(201,147,58,0.1); border-radius: 4px; pointer-events: none; }
-        .card-back-hint { position: absolute; bottom: 10px; font-size: 0.58rem; font-style: italic; color: var(--deck-color); opacity: 0.3; letter-spacing: 0.05em; }
+        .card-back-hint { position: absolute; bottom: 10px; font-size: 0.80rem; font-style: italic; color: var(--deck-accent); opacity: 0.85; letter-spacing: 0.05em; }
         .card-front { transform: rotateY(180deg); background: linear-gradient(155deg, #1c1508 0%, #0e0b07 100%); border: 1px solid var(--deck-color); padding: 0.9rem 0.85rem 0.85rem; display: flex; flex-direction: column; gap: 0.45rem; box-shadow: 0 6px 28px rgba(0,0,0,0.75); }
         .card-front-glow { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 40% at 50% 0%, rgba(201,147,58,0.07) 0%, transparent 70%); pointer-events: none; border-radius: 6px; }
         .card-front-header { display: flex; justify-content: space-between; align-items: center; }
@@ -610,8 +603,7 @@ export default function ForjaPersonajes() {
                         card={item.card}
                         onSave={handleSave}
                         saved={isSaved(item.card.id)}
-                        cardIndex={cardIdx}
-                        isNew={rollIdx === 0}
+
                       />
                     ))}
                   </div>
